@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Sites Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --secondary: #00b4d8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e6e6e6;
+            --gray: #2a2a2a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 180, 216, 0.1) 0%, transparent 20%);
+        }
+
+        /* Navbar estilizada */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 1.2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 5% 5rem;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), var(--darker));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #ccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+        }
+
+        /* Sites Section */
+        .sites {
+            padding: 5rem 5%;
+            background-color: var(--darker);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .site-card {
+            background: linear-gradient(145deg, #1a1a1a, #222);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .site-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);
+            border-color: rgba(138, 43, 226, 0.4);
+        }
+
+        .site-img {
+            height: 200px;
+            background: linear-gradient(45deg, #2c2c2c, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .site-img:before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--secondary));
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .site-img-inner {
+            position: absolute;
+            width: 95%;
+            height: 90%;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+
+        .site-info {
+            padding: 1.5rem;
+        }
+
+        .site-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .site-info p {
+            color: #ccc;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .site-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .site-features span {
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .site-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+        }
+
+        .site-link {
+            display: block;
+            text-align: center;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .site-link:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 1.2rem 5%;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .sites-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 8rem 5% 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .sites-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .site-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-globe"></i>
+            WebPortfolio
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#sites">Sites</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Portfólio de Sites Premium</h1>
+        <p>Descubra sites exclusivos e prontos para impulsionar seu negócio online. Cada projeto é cuidadosamente desenvolvido com designs modernos e tecnologia de ponta.</p>
+        <a href="#sites" class="cta-button">Ver Sites Disponíveis</a>
+    </section>
+
+    <!-- Sites Section -->
+    <section class="sites" id="sites">
+        <h2 class="section-title">Sites Disponíveis</h2>
+        <div class="sites-grid">
+            <!-- Site 1 -->
+            <div class="site-card">
+                <div class="site-img">
+                    <div class="site-img-inner">E-commerce Elegance</div>
+                </div>
+                <div class="site-info">
+                    <h3>E-commerce Elegance</h3>
+                    <p>Loja virtual completa com sistema de pagamentos, carrinho de compras e painel administrativo.</p>
+                    <div class="site-features">
+                        <span>Responsivo</span>
+                        <span>SEO Otimizado</span>
+                        <span>Integração Pagamentos</span>
+                    </div>
+                    <div class="site-price">R$ 4.999,00</div>
+                    <a href="#contact" class="site-link">Demonstração</a>
+                </div>
+            </div>
+
+            <!-- Site 2 -->
+            <div class="site-card">
+                <div class="site-img">
+                    <div class="site-img-inner">Blog Moderno</div>
+                </div>
+                <div class="site-info">
+                    <h3>Blog Moderno</h3>
+                    <p>Plataforma de blog com design contemporâneo, sistema de categorias e integração com redes sociais.</p>
+                    <div class="site-features">
+                        <span>Design Responsivo</span>
+                        <span>CMS Integrado</span>
+                        <span>Comentários</span>
+                    </div>
+                    <div class="site-price">R$ 2.499,00</div>
+                    <a href="#contact" class="site-link">Demonstração</a>
+                </div>
+            </div>
+
+            <!-- Site 3 -->
+            <div class="site-card">
+                <div class="site-img">
+                    <div class="site-img-inner">Corporate Pro</div>
+                </div>
+                <div class="site-info">
+                    <h3>Corporate Pro</h3>
+                    <p>Site institucional profissional para empresas, com portfólio, serviços e formulário de contato.</p>
+                    <div class="site-features">
+                        <span>Layout Profissional</span>
+                        <span>Galeria</span>
+                        <span>Formulários</span>
+                    </div>
+                    <div class="site-price">R$ 3.299,00</div>
+                    <a href="#contact" class="site-link">Demonstração</a>
+                </div>
+            </div>
+
+            <!-- Site 4 -->
+            <div class="site-card">
+                <div class="site-img">
+                    <div class="site-img-inner">Restaurant Guide</div>
+                </div>
+                <div class="site-info">
+                    <h3>Restaurant Guide</h3>
+                    <p>Site para restaurante com cardápio digital, sistema de reservas e integração com delivery.</p>
+                    <div class="site-features">
+                        <span>Cardápio Digital</span>
+                        <span>Sistema de Reservas</span>
+                        <span>Google Maps</span>
+                    </div>
+                    <div class="site-price">R$ 3.799,00</div>
+                    <a href="#contact" class="site-link">Demonstração</a>
+                </div>
+            </div>
+
+            <!-- Site 5 -->
+            <div class="site-card">
+                <div class="site-img">
+                    <div class="site-img-inner">Portfolio Creative</div>
+                </div>
+                <div class="site-info">
+                    <h3>Portfolio Creative</h3>
+                    <p>Site portfolio para artistas, designers e fotógrafos com galeria elegante e animações suaves.</p>
+                    <div class="site-features">
+                        <span>Galeria Interativa</span>
+                        <span>Animações</span>
+                        <span>Contato Direto</span>
+                    </div>
+                    <div class="site-price">R$ 2.899,00</div>
+                    <a href="#contact" class="site-link">Demonstração</a>
+                </div>
+            </div>
+
+            <!-- Site 6 -->
+            <div class="site-card">
+                <div class="site-img">
+                    <div class="site-img-inner">Health & Wellness</div>
+                </div>
+                <div class="site-info">
+                    <h3>Health & Wellness</h3>
+                    <p>Site para clínicas e profissionais da saúde com agendamento online e área de pacientes.</p>
+                    <div class="site-features">
+                        <span>Agendamento Online</span>
+                        <span>Área do Paciente</span>
+                        <span>Blog Integrado</span>
+                    </div>
+                    <div class="site-price">R$ 4.299,00</div>
+                    <a href="#contact" class="site-link">Demonstração</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Entre em Contato</h3>
+            <p>Interessado em algum site? Entre em contato para mais informações e demonstração ao vivo.</p>
+            
+            <div class="contact-info">
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <span>contato@webportfolio.com</span>
+                </div>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <span>(11) 99999-9999</span>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 WebPortfolio - Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+</body>
+              </html>
