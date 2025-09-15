@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OrionWeb — Templates Premium para Revenda</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+  <meta name="description" content="OrionWeb — Templates profissionais, responsivos e prontos para revenda. Personalize cor, fonte e acessibilidade.">
+
+  <style>
+    :root{
+      --bg:#07070a;
+      --panel: rgba(255,255,255,0.03);
+      --muted:#cbd5e1;
+      --muted-2:#9aa6b2;
+      --primary:#7c3aed;
+      --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --transition:240ms cubic-bezier(.2,.9,.3,1);
+      --font-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      --line:1.5;
+      --spacing:0.0rem; /* extra spacing (em) */
+      --scale:1;
+      --contrast:1;
+    }
+
+    /* Theme palettes */
+    :root[data-theme="light"]{
+      --bg:#f6f7fb;
+      --panel: rgba(0,0,0,0.04);
+      --muted:#1f2937;
+      --primary:#334155;
+      --accent:#0ea5a4;
+    }
+    :root[data-palette="violet"]{ --primary:#7c3aed; --accent:#a78bfa; }
+    :root[data-palette="blue"]{ --primary:#075985; --accent:#06b6d4; }
+    :root[data-palette="green"]{ --primary:#166534; --accent:#4ade80; }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:var(--font-base);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(124,58,237,0.06), transparent 6%),
+        radial-gradient(circle at 90% 80%, rgba(6,182,212,0.04), transparent 12%),
+        var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition: background var(--transition), color var(--transition), filter var(--transition);
+      line-height:var(--line);
+      font-size:calc(16px * var(--scale));
+      letter-spacing:var(--spacing);
+      filter:contrast(var(--contrast));
+    }
+
+    /* Skip link */
+    .skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;background:var(--panel);border-radius:8px;z-index:9999;color:var(--muted)}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:999;background:linear-gradient(90deg, rgba(0,0,0,0.3), rgba(0,0,0,0.12));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:space-between;padding:14px 6%}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 6px 18px rgba(0,0,0,0.6);font-weight:800;color:white}
+    .brand h1{margin:0;font-size:1rem}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px;font-weight:600}
+    nav a:hover, nav a:focus{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;outline:none;transform:translateY(-2px)}
+
+    .controls{display:flex;gap:8px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;border:none;padding:10px 16px;box-shadow:0 8px 24px rgba(0,0,0,0.5);font-weight:700}
+
+    .hamburger{display:none}
+    @media(max-width:900px){nav.desktop{display:none}.hamburger{display:inline-flex}}
+
+    /* Hero */
+    .hero{display:flex;gap:36px;align-items:center;padding:6rem 6% 4rem}
+    .hero-left{max-width:720px}
+    .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--accent);font-weight:700;margin-bottom:12px}
+    h2{font-size:clamp(1.8rem,4.2vw,3.4rem);margin:8px 0;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;color:transparent}
+    p.lead{color:var(--muted-2);font-size:1.05rem;margin:12px 0 18px}
+
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-visual{flex:1;display:flex;justify-content:center;align-items:center;min-height:300px;position:relative}
+    .mock-device{width:420px;max-width:92%;border-radius:18px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 18px 50px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .mock-screen{height:260px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#0f0f12,#17171a);color:var(--muted);font-weight:700}
+
+    /* Particles canvas */
+    #particles{position:absolute;inset:0;z-index:0;pointer-events:none}
+
+    /* Cards grid */
+    section.catalog{padding:40px 6%}
+    .section-title{font-size:1.4rem;margin-bottom:18px;color:var(--muted);font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform var(--transition),box-shadow var(--transition)}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+    .thumb{height:140px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg, rgba(124,58,237,0.06), rgba(6,182,212,0.06));color:var(--muted);font-weight:700}
+    .card h3{margin:10px 0;color:var(--primary)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:999px;font-size:.8rem;color:var(--muted-2)}
+
+    .price{font-weight:900;color:var(--accent);margin-top:8px}
+    .actions{margin-top:12px;display:flex;gap:8px}
+    .actions .btn{flex:1;text-align:center}
+
+    /* Testimonials */
+    .testimonials{padding:36px 6%;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center}
+    .testimonial-card{background:var(--panel);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .quote{font-size:1.05rem;color:var(--muted-2);}
+
+    /* Footer */
+    footer{padding:28px 6%;border-top:1px solid rgba(255,255,255,0.03);margin-top:30px}
+    .footer-grid{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
+    .col{min-width:200px;color:var(--muted-2)}
+    .legal{color:rgba(255,255,255,0.35);font-size:.9rem;margin-top:12px}
+
+    /* Drawer/accessibility */
+    .drawer{position:fixed;right:18px;bottom:18px;z-index:1100;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+    .drawer-panel{width:320px;max-width:94vw;background:linear-gradient(180deg,rgba(0,0,0,0.5),rgba(0,0,0,0.25));padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:none}
+    .drawer-panel.show{display:block}
+    .control-row{display:flex;align-items:center;gap:8px;margin:8px 0}
+    .small{font-size:.9rem;color:var(--muted-2);min-width:90px}
+
+    /* Responsive */
+    @media(max-width:900px){.hero{flex-direction:column;padding:3.5rem 6%}.testimonials{grid-template-columns:1fr;}.hero-visual{order:-1;width:100%}.hamburger{display:inline-flex}}
+
+    /* Focus outlines */
+    a:focus, button:focus, select:focus {outline:3px solid rgba(124,58,237,0.18);outline-offset:2px;border-radius:8px}
+
+    /* Small helpers */
+    .muted{color:var(--muted-2)}
+    .center{display:flex;align-items:center;justify-content:center}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Pular para o conteúdo</a>
+
+  <header role="banner" aria-label="Cabeçalho principal">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">O</div>
+      <div>
+        <h1>OrionWeb</h1>
+        <div class="muted" style="font-size:.85rem;margin-top:4px">Templates Premium • Prontos para revenda</div>
+      </div>
+    </div>
+
+    <nav class="desktop" role="navigation" aria-label="Navegação principal">
+      <a href="#home">Início</a>
+      <a href="#catalog">Templates</a>
+      <a href="#testimonials">Depoimentos</a>
+      <a href="#contact">Contato</a>
+    </nav>
+
+    <div class="controls" role="toolbar" aria-label="Controles">
+      <button class="btn" id="voiceBtn" title="Ler a chamada">🔊 Ouvir</button>
+      <button class="btn" id="themeBtn" aria-pressed="false" title="Alternar tema">Tema</button>
+      <button class="btn" id="palettesBtn" title="Paletas">Paleta</button>
+      <button class="btn primary" id="buyNow">Comprar</button>
+      <button class="hamburger btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+    </div>
+  </header>
+
+  <nav id="mobileMenu" style="display:none; padding:10px 6%; background:transparent">
+    <a href="#home" style="display:block;padding:8px 0">Início</a>
+    <a href="#catalog" style="display:block;padding:8px 0">Templates</a>
+    <a href="#testimonials" style="display:block;padding:8px 0">Depoimentos</a>
+    <a href="#contact" style="display:block;padding:8px 0">Contato</a>
+  </nav>
+
+  <main id="main">
+    <!-- Particle canvas -->
+    <canvas id="particles" aria-hidden="true"></canvas>
+
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <div class="eyebrow">Pronto para revenda</div>
+        <h2 id="hero-title">Venda sites profissionais — entregue em horas, não semanas</h2>
+        <p class="lead">Modelos otimizados para conversão, responsivos e acessíveis. Personalize cor de fundo, tipografia, espaçamento e ative leitura por voz para demonstrar ao cliente.</p>
+
+        <div class="hero-ctas">
+          <a class="btn primary" href="#catalog">Ver Templates</a>
+          <button class="btn" id="demoBtn">Ver Demo</button>
+          <button class="btn" id="openDrawerBtn" aria-haspopup="true" aria-controls="drawer">Acessibilidade</button>
+        </div>
+
+        <div style="margin-top:14px;color:var(--muted-2);font-size:.92rem">
+          Nome da loja: <strong>OrionWeb</strong> — troque para seu branding nas configurações.
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mock-device">
+          <div class="mock-screen">Mockup: visual do template</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="catalog" aria-labelledby="catalog-title">
+      <h3 id="catalog-title" class="section-title">Modelos premium</h3>
+      <div class="grid" role="list">
+        <!-- Card sample 1 -->
+        <article class="card" role="listitem" aria-label="E-commerce Pro">
+          <div class="thumb">E-commerce Pro</div>
+          <h3>E-commerce Pro</h3>
+          <p class="muted">Loja completa, checkout, filtros e integração com meios de pagamento.</p>
+          <div class="tags"><span class="tag">Responsivo</span><span class="tag">SEO</span><span class="tag">Checkout</span></div>
+          <div class="price">R$ 4.299 <span style="font-size:.8rem;color:rgba(255,255,255,0.35);font-weight:600">— pagamento único</span></div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="ecommerce">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Card sample 2 -->
+        <article class="card" role="listitem" aria-label="Portfolio Studio">
+          <div class="thumb">Portfolio Studio</div>
+          <h3>Portfolio Studio</h3>
+          <p class="muted">Galeria elegante, animações suaves e formulários de contato.</p>
+          <div class="tags"><span class="tag">Galeria</span><span class="tag">Animado</span></div>
+          <div class="price">R$ 2.499</div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="portfolio">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Card sample 3 -->
+        <article class="card" role="listitem" aria-label="Corporate Clean">
+          <div class="thumb">Corporate Clean</div>
+          <h3>Corporate Clean</h3>
+          <p class="muted">Institucional com portfólio, serviços e área para clientes.</p>
+          <div class="tags"><span class="tag">Profissional</span><span class="tag">Formulário</span></div>
+          <div class="price">R$ 3.199</div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="corporate">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Card sample 4 -->
+        <article class="card" role="listitem" aria-label="Restaurant Menu">
+          <div class="thumb">Restaurant Menu</div>
+          <h3>Restaurant Menu</h3>
+          <p class="muted">Cardápio digital, reservas e integração com delivery.</p>
+          <div class="tags"><span class="tag">Reservas</span><span class="tag">Delivery</span></div>
+          <div class="price">R$ 3.799</div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="restaurant">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials" aria-labelledby="testi-title">
+      <div>
+        <h3 id="testi-title" class="section-title">Clientes satisfeitos</h3>
+        <div class="testimonial-card">
+          <p class="quote">"Entreguei o site para meu cliente em 24h — visual lindo e vendas subiram 28%." — <strong>Mariana, agência</strong></p>
+        </div>
+        <div style="height:12px"></div>
+        <div class="testimonial-card">
+          <p class="quote">"Fácil de personalizar e ótimo suporte. Recomendo para freelancers." — <strong>Carlos, freelancer</strong></p>
+        </div>
+      </div>
+      <aside style="padding:12px;border-radius:12px;background:var(--panel);border:1px solid rgba(255,255,255,0.03)">
+        <strong>Promoção</strong>
+        <p class="muted" style="margin-top:8px">Pacote inicial: 3 templates + brand kit por R$6.999 — desconto aplicado automaticamente no checkout.</p>
+      </aside>
+    </section>
+
+    <section id="contact" style="padding:28px 6%;">
+      <h3 class="section-title">Contato</h3>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <p class="muted">Quer ver uma demonstração ao vivo ou personalizar um template para seu cliente? Fale conosco.</p>
+          <p style="margin-top:12px"><strong>Email:</strong> vendas@orionweb.com<br/><strong>WhatsApp:</strong> (11) 99999-9999</p>
+        </div>
+        <form style="min-width:280px;max-width:420px;background:var(--panel);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)" onsubmit="event.preventDefault(); alert('Formulário enviado — substituir por integração real');">
+          <label class="muted" for="name">Nome</label><br/>
+          <input id="name" required style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)"><br/>
+          <label class="muted" for="email">Email</label><br/>
+          <input id="email" type="email" required style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)"><br/>
+          <button class="btn primary" type="submit" style="width:100%">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <div class="footer-grid">
+        <div class="col">
+          <strong>OrionWeb</strong>
+          <div class="muted" style="margin-top:6px">Templates prontos • Entrega rápida • Suporte</div>
+        </div>
+        <div class="col">
+          <strong>Links</strong>
+          <div class="muted" style="margin-top:6px"><a href="#catalog">Templates</a> • <a href="#contact">Contato</a></div>
+        </div>
+        <div class="col">
+          <strong>Contato</strong>
+          <div class="muted" style="margin-top:6px">vendas@orionweb.com<br/>(11) 99999-9999</div>
+        </div>
+      </div>
+      <div class="legal">&copy; <span id="year"></span> OrionWeb — Todos os direitos reservados</div>
+    </footer>
+  </main>
+
+  <!-- Accessibility drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" id="drawerPanel" role="dialog" aria-label="Painel de acessibilidade">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <strong>Acessibilidade</strong>
+        <button id="closeDrawer" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="control-row">
+        <div class="small">Fonte</div>
+        <select id="fontSelect" aria-label="Escolher fonte">
+          <option value="Inter">Inter (Sans)</option>
+          <option value="'Playfair Display', serif">Playfair (Serif)</option>
+          <option value="'Space Grotesk', sans-serif">Space Grotesk (Display)</option>
+        </select>
+      </div>
+
+      <div class="control-row">
+        <div class="small">Tamanho</div>
+        <button class="btn" data-size="0.9">A-</button>
+        <button class="btn" data-size="1">A</button>
+        <button class="btn" data-size="1.1">A+</button>
+      </div>
+
+      <div class="control-row">
+        <div class="small">Espaçamento</div>
+        <button class="btn" data-spacing="-0.02">Compacto</button>
+        <button class="btn" data-spacing="0">Padrão</button>
+        <button class="btn" data-spacing="0.02">Aumentado</button>
+      </div>
+
+      <div class="control-row">
+        <div class="small">Contraste</div>
+        <button class="btn" id="contrastToggle">Alto contraste</button>
+      </div>
+
+      <div class="control-row">
+        <div class="small">Cor de fundo</div>
+        <input type="color" id="bgColor" value="#07070a" aria-label="Cor de fundo">
+      </div>
+
+      <div style="margin-top:8px;font-size:.85rem;color:var(--muted-2)">Preferências salvas localmente no navegador.</div>
+    </div>
+
+    <button class="btn primary" id="drawerToggle" aria-haspopup="true" aria-expanded="false">Acessibilidade</button>
+  </div>
+
+  <script>
+    // Basic state + persistence
+    const root = document.documentElement;
+    const prefsKey = 'orion_prefs_v1';
+    const defaultPrefs = { theme:'dark', palette:'violet', font: 'Inter', size:1, spacing:0, bg:null, contrast:false };
+    let prefs = JSON.parse(localStorage.getItem(prefsKey) || 'null') || defaultPrefs;
+
+    // Elements
+    const yearEl = document.getElementById('year');
+    const themeBtn = document.getElementById('themeBtn');
+    const palettesBtn = document.getElementById('palettesBtn');
+    const drawerToggle = document.getElementById('drawerToggle');
+    const drawerPanel = document.getElementById('drawerPanel');
+    const openDrawerBtn = document.getElementById('openDrawerBtn');
+    const closeDrawer = document.getElementById('closeDrawer');
+    const drawer = document.getElementById('drawer');
+    const bgColor = document.getElementById('bgColor');
+    const fontSelect = document.getElementById('fontSelect');
+    const sizeBtns = document.querySelectorAll('[data-size]');
+    const spacingBtns = document.querySelectorAll('[data-spacing]');
+    const contrastToggle = document.getElementById('contrastToggle');
+    const voiceBtn = document.getElementById('voiceBtn');
+    const demoButtons = document.querySelectorAll('[data-demo]');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const palettes = ['violet','blue','green'];
+
+    // Apply preferences
+    function applyPrefs() {
+      // theme
+      if(prefs.theme === 'light') root.setAttribute('data-theme','light');
+      else root.removeAttribute('data-theme');
+
+      // palette
+      root.setAttribute('data-palette', prefs.palette || 'violet');
+
+      // font
+      document.body.style.fontFamily = prefs.font;
+
+      // size
+      root.style.setProperty('--scale', prefs.size || 1);
+
+      // spacing
+      root.style.setProperty('--spacing', prefs.spacing ? prefs.spacing + 'rem' : '0rem');
+
+      // contrast
+      root.style.setProperty('--contrast', prefs.contrast ? 1.18 : 1);
+
+      // background
+      if(prefs.bg){
+        document.body.style.background = prefs.bg;
+        try{ bgColor.value = rgbToHex(getComputedStyle(document.body).backgroundImage.match(/rgba\\((\\d+),\\s*(\\d+),\\s*(\\d+),/)?[1] : '#07070A'); }catch(e){}
+      } else {
+        // default gradient already set in CSS
+      }
+
+      localStorage.setItem(prefsKey, JSON.stringify(prefs));
+    }
+
+    // Init UI
+    yearEl.textContent = new Date().getFullYear();
+    applyPrefs();
+
+    // Theme toggle
+    themeBtn.addEventListener('click', ()=>{
+      prefs.theme = prefs.theme === 'light' ? 'dark' : 'light';
+      themeBtn.setAttribute('aria-pressed', prefs.theme === 'light');
+      applyPrefs();
+    });
+
+    // Palettes cycle
+    palettesBtn.addEventListener('click', ()=>{
+      const idx = palettes.indexOf(prefs.palette || 'violet');
+      prefs.palette = palettes[(idx + 1) % palettes.length];
+      applyPrefs();
+    });
+
+    // Drawer
+    drawerToggle.addEventListener('click', ()=> {
+      const show = !drawerPanel.classList.contains('show');
+      drawerPanel.classList.toggle('show', show);
+      drawerToggle.setAttribute('aria-expanded', String(show));
+      drawerPanel.setAttribute('aria-hidden', !show);
+    });
+    openDrawerBtn && openDrawerBtn.addEventListener('click', ()=> { drawerPanel.classList.add('show'); drawerPanel.setAttribute('aria-hidden','false'); });
+    closeDrawer.addEventListener('click', ()=> { drawerPanel.classList.remove('show'); drawerPanel.setAttribute('aria-hidden','true'); });
+
+    // Background color change
+    bgColor.addEventListener('input', (e)=>{
+      const color = e.target.value;
+      const grad = `radial-gradient(circle at 10% 20%, ${hexToRgba(color,0.06)} 0%, transparent 8%), radial-gradient(circle at 90% 80%, ${hexToRgba(color,0.04)} 0%, transparent 12%), ${color}`;
+      prefs.bg = grad;
+      applyPrefs();
+    });
+
+    // Font select
+    fontSelect.addEventListener('change', (e)=>{
+      prefs.font = e.target.value;
+      applyPrefs();
+    });
+
+    // Size buttons
+    sizeBtns.forEach(btn => btn.addEventListener('click', ()=>{
+      prefs.size = Number(btn.getAttribute('data-size')) || 1;
+      applyPrefs();
+    }));
+
+    // Spacing
+    spacingBtns.forEach(btn => btn.addEventListener('click', ()=>{
+      prefs.spacing = Number(btn.getAttribute('data-spacing')) || 0;
+      applyPrefs();
+    }));
+
+    // Contrast
+    contrastToggle.addEventListener('click', ()=> {
+      prefs.contrast = !prefs.contrast;
+      applyPrefs();
+    });
+
+    // Demo buttons (replace with real demo links)
+    demoButtons.forEach(b => b.addEventListener('click', (e)=>{
+      e.preventDefault();
+      alert('Abrir demo: ' + b.getAttribute('data-demo') + ' — Substitua por um link de demonstração real.');
+    }));
+
+    // Mobile menu
+    mobileMenuBtn.addEventListener('click', ()=> {
+      const open = mobileMenu.style.display !== 'block';
+      mobileMenu.style.display = open ? 'block' : 'none';
+      mobileMenuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Voice / read aloud: use Web Speech API
+    voiceBtn.addEventListener('click', ()=>{
+      const s = window.speechSynthesis;
+      if(!s) { alert('Leitura por voz não disponível neste navegador.'); return; }
+      s.cancel();
+      const t = document.getElementById('hero-title').innerText + '. ' + document.querySelector('.lead').innerText;
+      const u = new SpeechSynthesisUtterance(t);
+      u.lang = 'pt-BR';
+      u.rate = 1;
+      s.speak(u);
+    });
+
+    // Helpers
+    function hexToRgba(hex, a){
+      const h = hex.replace('#','');
+      const bigint = parseInt(h,16);
+      const r = (bigint >> 16) & 255;
+      const g = (bigint >> 8) & 255;
+      const b = bigint & 255;
+      return `rgba(${r},${g},${b},${a})`;
+    }
+    function rgbToHex(rgb) {
+      // naive/placeholder
+      return '#07070A';
+    }
+
+    // Keyboard: Esc closes drawer & mobile menu
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        drawerPanel.classList.remove('show');
+        mobileMenu.style.display = 'none';
+      }
+    });
+
+    // Simple particles background (canvas)
+    (function(){
+      const canvas = document.getElementById('particles');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+      const particles = [];
+      const count = Math.max(18, Math.floor((w*h)/90000));
+      function rand(min,max){ return Math.random()*(max-min)+min; }
+      for(let i=0;i<count;i++){
+        particles.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: rand(0.6,2.4),
+          vx: rand(-0.15,0.15),
+          vy: rand(-0.05,0.05),
+          hue: rand(200,300),
+          alpha: rand(0.05,0.18)
+        });
+      }
+      function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+      window.addEventListener('resize', resize);
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        for(let p of particles){
+          p.x += p.vx;
+          p.y += p.vy;
+          if(p.x < -10) p.x = w+10;
+          if(p.x > w+10) p.x = -10;
+          if(p.y < -10) p.y = h+10;
+          if(p.y > h+10) p.y = -10;
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(124,58,237,${p.alpha})`;
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // Progressive enhancement: quick animation on load for mock device
+    window.addEventListener('load', ()=> {
+      const mock = document.querySelector('.mock-screen');
+      if(mock) { mock.animate([{transform:'translateY(8px) scale(.99)'},{transform:'translateY(0px) scale(1)'}],{duration:900,easing:'cubic-bezier(.2,.9,.3,1)'}); }
+    });
+
+    // Accessibility: save preferences will persist through applyPrefs() call
+  </script>
+</body>
+</html>
