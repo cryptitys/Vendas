@@ -204,6 +204,50 @@
   </main>
 
   <!-- Accessibility drawer -->
+     <!-- Accessibility drawer -->    <div class="drawer" id="drawer" aria-hidden="true">  
+    <div class="drawer-panel" id="drawerPanel" role="dialog" aria-label="Painel de acessibilidade">  
+      <div style="display:flex;align-items:center;justify-content:space-between">  
+        <strong>Acessibilidade</strong>  
+        <button id="closeDrawer" aria-label="Fechar painel de acessibilidade">✕</button>  
+      </div>  <div class="control-row">  
+    <div class="small">Fonte</div>  
+    <select id="fontSelect" aria-label="Escolher fonte">  
+      <option value="Inter">Inter (Sans)</option>  
+      <option value="'Playfair Display', serif">Playfair (Serif)</option>  
+      <option value="'Space Grotesk', sans-serif">Space Grotesk (Display)</option>  
+    </select>  
+  </div>  
+
+  <div class="control-row">  
+    <div class="small">Tamanho</div>  
+    <button class="btn" data-size="0.9" aria-label="Diminuir tamanho da fonte">A-</button>  
+    <button class="btn" data-size="1" aria-label="Tamanho padrão da fonte">A</button>  
+    <button class="btn" data-size="1.1" aria-label="Aumentar tamanho da fonte">A+</button>  
+  </div>  
+
+  <div class="control-row">  
+    <div class="small">Espaçamento</div>  
+    <button class="btn" data-spacing="-0.02" aria-label="Espaçamento compacto">Compacto</button>  
+    <button class="btn" data-spacing="0" aria-label="Espaçamento padrão">Padrão</button>  
+    <button class="btn" data-spacing="0.02" aria-label="Espaçamento aumentado">Aumentado</button>  
+  </div>  
+
+  <div class="control-row">  
+    <div class="small">Contraste</div>  
+    <button class="btn" id="contrastToggle" aria-pressed="false">Alto contraste</button>  
+  </div>  
+
+  <div class="control-row">  
+    <div class="small">Cor de fundo</div>  
+    <input type="color" id="bgColor" value="#07070a" aria-label="Escolher cor de fundo">  
+  </div>  
+
+  <div style="margin-top:8px;font-size:.85rem;color:var(--muted-2)">Preferências salvas localmente no navegador.</div>  
+</div>  
+
+<button class="btn primary" id="drawerToggle" aria-haspopup="true" aria-expanded="false" aria-label="Abrir painel de acessibilidade">Acessibilidade</button>
+
+  </div>    <div id="toast" class="toast" role="alert" aria-live="polite"></div>  
   <!--apaguei a acessibilidade kk, tava difícil de controlarr, slk num compensa-->
   <script>
     // Basic state + persistence
