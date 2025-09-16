@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OrionWeb — Templates Premium para Revenda</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <meta name="description" content="OrionWeb — Templates profissionais, responsivos e prontos para revenda. Personalize cor, fonte e acessibilidade.">
+  
+  <style>
+    :root {
+      --primary: #7c3aed;
+      --primary-light: #8b5cf6;
+      --primary-dark: #6d28d9;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --bg: #f8fafc;
+      --bg-panel: #ffffff;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --muted: #94a3b8;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    [data-theme="dark"] {
+      --primary: #8b5cf6;
+      --primary-light: #a78bfa;
+      --primary-dark: #7c3aed;
+      --text: #f1f5f9;
+      --text-light: #cbd5e1;
+      --bg: #0f172a;
+      --bg-panel: #1e293b;
+      --border: #334155;
+      --success: #34d399;
+      --muted: #64748b;
+      --card-bg: #1e293b;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--bg-panel);
+      box-shadow: var(--shadow);
+      padding: 16px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .brand h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Navigation */
+    nav.desktop {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav.desktop a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav.desktop a:hover {
+      color: var(--primary);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      border: 1px solid var(--border);
+    }
+
+    .btn:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: white;
+      border: 1px solid var(--primary);
+    }
+
+    .btn.primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 6%;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 90%;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mock-device {
+      width: 320px;
+      height: 500px;
+      background: var(--bg-panel);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+
+    .mock-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mock-nav {
+      height: 50px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .mock-nav-item {
+      width: 30px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .mock-content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mock-line {
+      height: 12px;
+      background: var(--border);
+      border-radius: 6px;
+    }
+
+    .mock-line.short {
+      width: 60%;
+    }
+
+    .mock-line.medium {
+      width: 80%;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 6%;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 48px;
+      font-weight: 700;
+    }
+
+    /* Catalog */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .thumb {
+      height: 180px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .card .muted {
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: var(--bg);
+      color: var(--text);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .actions .btn {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      background: var(--bg);
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    #contact {
+      background: var(--bg);
+    }
+
+    form {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      margin-bottom: 16px;
+      font-family: inherit;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-panel);
+      padding: 40px 6% 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .col strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .col a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .col a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .legal {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Menu */
+    #mobileMenu {
+      display: none;
+      background: var(--bg-panel);
+      padding: 16px 6%;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #mobileMenu a {
+      display: block;
+      padding: 12px 0;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #mobileMenu a:last-child {
+      border-bottom: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+      
+      .lead {
+        max-width: 100%;
+      }
+      
+      .hero-ctas {
+        justify-content: center;
+      }
+      
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+      
+      nav.desktop {
+        display: none;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-ctas {
+        flex-direction: column;
+      }
+      
+      .controls .btn:not(.hamburger) {
+        display: none;
+      }
+      
+      .mock-device {
+        width: 280px;
+        height: 440px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">OW</div>
+      <div>
+        <h1>OrionWeb</h1>
+        <div class="muted">Templates Premium • Prontos para revenda</div>
+      </div>
+    </div>
+
+    <nav class="desktop">
+      <a href="#home">Início</a>
+      <a href="#catalog">Templates</a>
+      <a href="#testimonials">Depoimentos</a>
+      <a href="#contact">Contato</a>
+    </nav>
+
+    <div class="controls">
+      <button class="btn" id="themeBtn" title="Alternar tema claro/escuro">🌓 Tema</button>
+      <button class="btn primary" id="buyNow">Comprar</button>
+      <button class="hamburger btn" id="mobileMenuBtn">☰</button>
+    </div>
+  </header>
+
+  <nav id="mobileMenu">
+    <a href="#home">Início</a>
+    <a href="#catalog">Templates</a>
+    <a href="#testimonials">Depoimentos</a>
+    <a href="#contact">Contato</a>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">Pronto para revenda</div>
+        <h2>Venda sites profissionais — entregue em horas, não semanas</h2>
+        <p class="lead">Modelos otimizados para conversão, responsivos e acessíveis. Personalize cor de fundo, tipografia, espaçamento e ative leitura por voz para demonstrar ao cliente.</p>
+
+        <div class="hero-ctas">
+          <a class="btn primary" href="#catalog">Ver Templates</a>
+          <button class="btn" id="demoBtn">Ver Demo</button>
+        </div>
+
+        <div style="margin-top:20px;color:var(--muted);font-size:.92rem">
+          Nome da loja: <strong>OrionWeb</strong> — troque para seu branding nas configurações.
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mock-device">
+          <div class="mock-screen">
+            <div class="mock-nav">
+              <div class="mock-nav-item"></div>
+              <div class="mock-nav-item"></div>
+              <div class="mock-nav-item"></div>
+            </div>
+            <div class="mock-content">
+              <div class="mock-line"></div>
+              <div class="mock-line short"></div>
+              <div class="mock-line medium"></div>
+              <div class="mock-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="catalog">
+      <h3 class="section-title">Modelos premium</h3>
+      <div class="grid">
+        <!-- Card sample 1 -->
+        <article class="card fade-in">
+          <div class="thumb">E-commerce Pro</div>
+          <h3>E-commerce Pro</h3>
+          <p class="muted">Loja completa, checkout, filtros e integração com meios de pagamento.</p>
+          <div class="tags"><span class="tag">Responsivo</span><span class="tag">SEO</span><span class="tag">Checkout</span></div>
+          <div class="price">R$ 4.299 <span class="muted">— pagamento único</span></div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="ecommerce">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Card sample 2 -->
+        <article class="card fade-in" style="animation-delay: 0.1s">
+          <div class="thumb">Portfolio Studio</div>
+          <h3>Portfolio Studio</h3>
+          <p class="muted">Galeria elegante, animações suaves e formulários de contato.</p>
+          <div class="tags"><span class="tag">Galeria</span><span class="tag">Animado</span></div>
+          <div class="price">R$ 2.499</div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="portfolio">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Card sample 3 -->
+        <article class="card fade-in" style="animation-delay: 0.2s">
+          <div class="thumb">Corporate Clean</div>
+          <h3>Corporate Clean</h3>
+          <p class="muted">Institucional com portfólio, serviços e área para clientes.</p>
+          <div class="tags"><span class="tag">Profissional</span><span class="tag">Formulário</span></div>
+          <div class="price">R$ 3.199</div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="corporate">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Card sample 4 -->
+        <article class="card fade-in" style="animation-delay: 0.3s">
+          <div class="thumb">Restaurant Menu</div>
+          <h3>Restaurant Menu</h3>
+          <p class="muted">Cardápio digital, reservas e integração com delivery.</p>
+          <div class="tags"><span class="tag">Reservas</span><span class="tag">Delivery</span></div>
+          <div class="price">R$ 3.799</div>
+          <div class="actions">
+            <a class="btn" href="#" data-demo="restaurant">Demo</a>
+            <a class="btn primary" href="#contact">Comprar</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div>
+        <h3 class="section-title">Clientes satisfeitos</h3>
+        <div class="testimonial-card fade-in">
+          <p class="quote">"Entreguei o site para meu cliente em 24h — visual lindo e vendas subiram 28%." — <strong>Mariana, agência</strong></p>
+        </div>
+        <div style="height:20px"></div>
+        <div class="testimonial-card fade-in" style="animation-delay: 0.1s">
+          <p class="quote">"Fácil de personalizar e ótimo suporte. Recomendo para freelancers." — <strong>Carlos, freelancer</strong></p>
+        </div>
+      </div>
+      <aside class="fade-in" style="padding:20px;border-radius:12px;background:var(--card-bg);border:1px solid var(--border); animation-delay: 0.2s">
+        <strong>Promoção</strong>
+        <p class="muted" style="margin-top:8px">Pacote inicial: 3 templates + brand kit por R$6.999 — desconto aplicado automaticamente no checkout.</p>
+      </aside>
+    </section>
+
+    <section id="contact">
+      <h3 class="section-title">Contato</h3>
+      <div style="display:flex;gap:30px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <p class="muted">Quer ver uma demonstração ao vivo ou personalizar um template para seu cliente? Fale conosco.</p>
+          <p style="margin-top:16px"><strong>Email:</strong> vendas@orionweb.com<br/><strong>WhatsApp:</strong> (11) 99999-9999</p>
+        </div>
+        <form id="contactForm" style="flex:1;min-width:280px;">
+          <label for="name">Nome</label>
+          <input id="name" required>
+          
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+          
+          <label for="message">Mensagem</label>
+          <textarea id="message" rows="3" required></textarea>
+          
+          <button class="btn primary" type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="col">
+          <strong>OrionWeb</strong>
+          <div class="muted">Templates prontos • Entrega rápida • Suporte</div>
+        </div>
+        <div class="col">
+          <strong>Links</strong>
+          <div class="muted"><a href="#catalog">Templates</a> • <a href="#contact">Contato</a></div>
+        </div>
+        <div class="col">
+          <strong>Contato</strong>
+          <div class="muted">vendas@orionweb.com<br/>(11) 99999-9999</div>
+        </div>
+      </div>
+      <div class="legal">&copy; <span id="year"></span> OrionWeb — Todos os direitos reservados</div>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // Basic state + persistence
+    const root = document.documentElement;
+    const prefsKey = 'orion_prefs';
+    const defaultPrefs = { theme: 'dark' };
+    let prefs = JSON.parse(localStorage.getItem(prefsKey)) || defaultPrefs;
+
+    // Elements
+    const yearEl = document.getElementById('year');
+    const themeBtn = document.getElementById('themeBtn');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const contactForm = document.getElementById('contactForm');
+    const toast = document.getElementById('toast');
+    const demoButtons = document.querySelectorAll('[data-demo]');
+    const demoBtn = document.getElementById('demoBtn');
+    const buyNowBtn = document.getElementById('buyNow');
+
+    // Apply preferences
+    function applyPrefs() {
+      // theme
+      if (prefs.theme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙 Escuro';
+      } else {
+        root.removeAttribute('data-theme');
+        themeBtn.textContent = '☀️ Claro';
+      }
+
+      localStorage.setItem(prefsKey, JSON.stringify(prefs));
+    }
+
+    // Show toast notification
+    function showToast(message, duration = 3000) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    // Init UI
+    yearEl.textContent = new Date().getFullYear();
+    applyPrefs();
+
+    // Theme toggle
+    themeBtn.addEventListener('click', () => {
+      prefs.theme = prefs.theme === 'light' ? 'dark' : 'light';
+      applyPrefs();
+      showToast(`Modo ${prefs.theme === 'light' ? 'claro' : 'escuro'} ativado`);
+    });
+
+    // Demo buttons
+    demoButtons.forEach(b => b.addEventListener('click', (e) => {
+      e.preventDefault();
+      showToast(`Demonstração de ${b.getAttribute('data-demo')} será aberta em breve`);
+      setTimeout(() => {
+        window.open(`https://demo-orionweb-${b.getAttribute('data-demo')}.netlify.app`, '_blank');
+      }, 1500);
+    }));
+
+    // Mobile menu
+    mobileMenuBtn.addEventListener('click', () => {
+      const open = mobileMenu.style.display !== 'block';
+      mobileMenu.style.display = open ? 'block' : 'none';
+      
+      // Close menu when clicking on a link
+      if (open) {
+        const links = mobileMenu.querySelectorAll('a');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.style.display = 'none';
+          });
+        });
+      }
+    });
+
+    // Form submission
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      // Simulate form submission
+      showToast('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+      contactForm.reset();
+    });
+
+    // Buy now button
+    buyNowBtn.addEventListener('click', () => {
+      showToast('Redirecionando para página de compra...');
+      setTimeout(() => {
+        window.location.href = '#catalog';
+      }, 1000);
+    });
+
+    // Demo button in hero
+    demoBtn.addEventListener('click', () => {
+      showToast('Abrindo demonstração...');
+      setTimeout(() => {
+        window.open('https://demo-orionweb.netlify.app', '_blank');
+      }, 1000);
+    });
+
+    // Keyboard: Esc closes mobile menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        mobileMenu.style.display = 'none';
+      }
+    });
+
+    // Progressive enhancement: animations on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements with fade-in class
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+  </html>
