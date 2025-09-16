@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OrionWeb — Templates Premium para Revenda</title>
+  
+  <!-- Meta tags para SEO -->
+  <meta name="description" content="OrionWeb — Templates profissionais, responsivos e prontos para revenda. Personalize cor, fonte e acessibilidade.">
+  <meta name="keywords" content="templates, sites, revenda, web design, desenvolvimento web">
+  <meta property="og:title" content="OrionWeb — Templates Premium para Revenda">
+  <meta property="og:description" content="Templates profissionais, responsivos e prontos para revenda.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #7c3aed;
+      --primary-light: #8b5cf6;
+      --primary-dark: #6d28d9;
+      --primary-gradient: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      --secondary: #f59e0b;
+      --secondary-light: #fbbf24;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --bg: #f8fafc;
+      --bg-panel: #ffffff;
+      --bg-light: #f1f5f9;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --muted: #94a3b8;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+      --radius: 12px;
+      --header-height: 80px;
+    }
+
+    [data-theme="dark"] {
+      --primary: #8b5cf6;
+      --primary-light: #a78bfa;
+      --primary-dark: #7c3aed;
+      --primary-gradient: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      --secondary: #d97706;
+      --secondary-light: #f59e0b;
+      --text: #f1f5f9;
+      --text-light: #cbd5e1;
+      --bg: #0f172a;
+      --bg-panel: #1e293b;
+      --bg-light: #1e293b;
+      --border: #334155;
+      --success: #34d399;
+      --warning: #f59e0b;
+      --error: #f87171;
+      --muted: #64748b;
+      --card-bg: #1e293b;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: var(--transition);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header melhorado */
+    header {
+      background-color: var(--bg-panel);
+      box-shadow: var(--shadow);
+      padding: 0 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--header-height);
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      height: 70px;
+      backdrop-filter: blur(10px);
+      background-color: rgba(var(--bg-panel-rgb), 0.95);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-gradient);
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .brand h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Navigation melhorada */
+    nav.desktop {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav.desktop a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav.desktop a:not(.btn):after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav.desktop a:not(.btn):hover:after {
+      width: 100%;
+    }
+
+    nav.desktop a:hover {
+      color: var(--primary);
+    }
+
+    /* Buttons melhorados */
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn.primary {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+    }
+
+    .btn.primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: var(--secondary);
+      color: white;
+      border: none;
+    }
+
+    .btn.secondary:hover {
+      background: var(--secondary-light);
+    }
+
+    .btn.icon {
+      padding: 10px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--text);
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Hero Section melhorada */
+    .hero {
+      padding: 120px 6% 80px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      margin-top: var(--header-height);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      opacity: 0.1;
+      filter: blur(80px);
+      z-index: 0;
+    }
+
+    .hero-left {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(124, 58, 237, 0.1);
+      border-radius: 30px;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .hero h2 span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      max-width: 90%;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .floating-card {
+      position: absolute;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-card:nth-child(1) {
+      top: 0;
+      left: 0;
+      animation-delay: 0s;
+    }
+
+    .floating-card:nth-child(2) {
+      top: 20%;
+      right: 0;
+      animation-delay: 2s;
+    }
+
+    .floating-card:nth-child(3) {
+      bottom: 20%;
+      left: 10%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .floating-card .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .mock-device {
+      width: 320px;
+      height: 500px;
+      background: var(--bg-panel);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .mock-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mock-nav {
+      height: 50px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .mock-nav-item {
+      width: 30px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .mock-content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mock-line {
+      height: 12px;
+      background: var(--border);
+      border-radius: 6px;
+    }
+
+    .mock-line.short {
+      width: 60%;
+    }
+
+    .mock-line.medium {
+      width: 80%;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 6%;
+      scroll-margin-top: var(--header-height);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Features */
+    .features {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    /* Catalog melhorado */
+    .catalog-filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--secondary);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .thumb {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .thumb img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .card .muted {
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: var(--bg);
+      color: var(--text);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .actions .btn {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Testimonials melhorado */
+    .testimonials {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+    }
+
+    .testimonials-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+    }
+
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .quote {
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .rating {
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Pricing */
+    .pricing-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 40px 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--primary);
+      transform: scale(1.05);
+    }
+
+    .pricing-card.featured::before {
+      content: 'Mais Popular';
+      position: absolute;
+      top: 15px;
+      right: -30px;
+      background: var(--primary);
+      color: white;
+      padding: 5px 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transform: rotate(45deg);
+    }
+
+    .pricing-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .price-tag {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .price-tag span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .pricing-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      margin-bottom: 15px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .faq-question {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 500px;
+    }
+
+    .faq-item.active .faq-toggle i {
+      transform: rotate(180deg);
+    }
+
+    .faq-toggle {
+      transition: var(--transition);
+    }
+
+    /* Contact melhorado */
+    #contact {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-method {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+    }
+
+    /* Footer melhorado */
+    footer {
+      background: var(--bg-panel);
+      padding: 80px 6% 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .footer-newsletter p {
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-form input {
+      flex-grow: 1;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .legal {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      box-shadow: var(--shadow-lg);
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Toast melhorado */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast.success {
+      background: var(--success);
+      color: white;
+    }
+
+    .toast.error {
+      background: var(--error);
+      color: white;
+    }
+
+    .toast i {
+      font-size: 1.2rem;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      width: 90%;
+      max-width: 500px;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-50px);
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .modal.open .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* Responsive melhorado */
+    @media (max-width: 1024px) {
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+      
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+        padding: 100px 6% 60px;
+      }
+      
+      .lead {
+        max-width: 100%;
+      }
+      
+      .hero-ctas {
+        justify-content: center;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      .hero-visual {
+        order: -1;
+      }
+      
+      nav.desktop {
+        display: none;
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .floating-card {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 70px;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+      }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-ctas {
+        flex-direction: column;
+      }
+      
+      .controls .btn:not(.hamburger) {
+        display: none;
+      }
+      
+      .mock-device {
+        width: 280px;
+        height: 440px;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">OW</div>
+      <div>
+        <h1>OrionWeb</h1>
+        <div class="muted">Templates Premium • Prontos para revenda</div>
+      </div>
+    </div>
+
+    <nav class="desktop">
+      <a href="#home">Início</a>
+      <a href="#features">Recursos</a>
+      <a href="#catalog">Templates</a>
+      <a href="#pricing">Preços</a>
+      <a href="#testimonials">Depoimentos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contato</a>
+    </nav>
+
+    <div class="controls">
+      <button class="btn icon" id="themeBtn" aria-label="Alternar tema">
+        <i class="fas fa-moon"></i>
+      </button>
+      <a href="#contact" class="btn primary">Começar Agora</a>
+      <button class="hamburger" id="mobileMenuBtn" aria-label="Menu mobile">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav id="mobileMenu">
+    <a href="#home">Início</a>
+    <a href="#features">Recursos</a>
+    <a href="#catalog">Templates</a>
+    <a href="#pricing">Preços</a>
+    <a href="#testimonials">Depoimentos</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contato</a>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">Pronto para revenda</div>
+        <h2>Venda sites profissionais — <span>entregue em horas, não semanas</span></h2>
+        <p class="lead">Modelos otimizados para conversão, responsivos e acessíveis. Personalize cor de fundo, tipografia, espaçamento e ative leitura por voz para demonstrar ao cliente.</p>
+        
+        <div class="hero-ctas">
+          <a href="#catalog" class="btn primary" id="buyNow">
+            <i class="fas fa-shopping-cart"></i> Explorar Templates
+          </a>
+          <button class="btn" id="demoBtn">
+            <i class="fas fa-play-circle"></i> Ver Demonstração
+          </button>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Templates Vendidos</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Satisfação do Cliente</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">24h</span>
+            <span class="stat-label">Suporte Rápido</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="floating-card">
+          <div class="icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <div>
+            <div>Personalização Fácil</div>
+            <small class="muted">Altere cores em 1 clique</small>
+          </div>
+        </div>
+        
+        <div class="floating-card">
+          <div class="icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div>
+            <div>100% Responsivo</div>
+            <small class="muted">Funciona em todos os dispositivos</small>
+          </div>
+        </div>
+        
+        <div class="floating-card">
+          <div class="icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div>
+            <div>Carregamento Rápido</div>
+            <small class="muted">Otimizado para performance</small>
+          </div>
+        </div>
+        
+        <div class="mock-device">
+          <div class="mock-screen">
+            <div class="mock-nav">
+              <div class="mock-nav-item"></div>
+              <div class="mock-nav-item"></div>
+              <div class="mock-nav-item"></div>
+            </div>
+            <div class="mock-content">
+              <div class="mock-line short"></div>
+              <div class="mock-line"></div>
+              <div class="mock-line medium"></div>
+              <div class="mock-line"></div>
+              <div class="mock-line short"></div>
+              <div class="mock-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Recursos Exclusivos</div>
+          <h2 class="section-title">Tudo que você precisa para vender sites com qualidade premium</h2>
+          <p class="section-subtitle">Nossos templates são desenvolvidos com as melhores práticas do mercado para garantir a satisfação dos seus clientes</p>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>Personalização Intuitiva</h3>
+            <p>Altere cores, fontes e layouts com nosso sistema visual. Sem necessidade de conhecimentos técnicos avançados.</p>
+            <a href="#" class="btn">Saiba mais</a>
+          </div>
+          
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Design Responsivo</h3>
+            <p>Layouts que se adaptam perfeitamente a qualquer dispositivo, do smartphone ao desktop.</p>
+            <a href="#" class="btn">Saiba mais</a>
+          </div>
+          
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3>Alta Performance</h3>
+            <p>Código otimizado para carregamento ultrarrápido, melhorando a experiência do usuário e SEO.</p>
+            <a href="#" class="btn">Saiba mais</a>
+          </div>
+          
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>Otimizado para SEO</h3>
+            <p>Estrutura semântica e técnicas modernas para melhor posicionamento nos mecanismos de busca.</p>
+            <a href="#" class="btn">Saiba mais</a>
+          </div>
+          
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class="fas fa-universal-access"></i>
+            </div>
+            <h3>Acessibilidade</h3>
+            <p>Totalmente acessível com recursos de leitura por voz e navegação por teclado para todos os usuários.</p>
+            <a href="#" class="btn">Saiba mais</a>
+          </div>
+          
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>Suporte Prioritário</h3>
+            <p>Equipe especializada para te ajudar com dúvidas e implementações sempre que precisar.</p>
+            <a href="#" class="btn">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Nossos Templates</div>
+          <h2 class="section-title">Modelos premium para todos os nichos</h2>
+          <p class="section-subtitle">Escolha entre diversas opções de templates profissionais para impulsionar suas vendas</p>
+        </div>
+        
+        <div class="catalog-filters">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="corporate">Corporativos</button>
+          <button class="filter-btn" data-filter="portfolio">Portfólios</button>
+          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+          <button class="filter-btn" data-filter="blog">Blogs</button>
+        </div>
+        
+        <div class="grid">
+          <div class="card fade-in" data-category="corporate">
+            <div class="thumb">
+              <span class="card-badge">Mais Vendido</span>
+              <div style="background:#7c3aed;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">CorporatePro</div>
+            </div>
+            <div class="card-content">
+              <h3>CorporatePro</h3>
+              <p class="muted">Template profissional para empresas corporativas com layout clean e moderno.</p>
+              <div class="tags">
+                <span class="tag">Responsivo</span>
+                <span class="tag">SEO</span>
+                <span class="tag">Moderno</span>
+              </div>
+              <div class="price">R$ 297,00</div>
+              <div class="actions">
+                <button class="btn" data-demo="corporate">Demo</button>
+                <button class="btn primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card fade-in" data-category="portfolio">
+            <div class="thumb">
+              <div style="background:#8b5cf6;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">CreativePortfolio</div>
+            </div>
+            <div class="card-content">
+              <h3>CreativePortfolio</h3>
+              <p class="muted">Ideal para designers, fotógrafos e artistas exibirem seus trabalhos com elegância.</p>
+              <div class="tags">
+                <span class="tag">Galeria</span>
+                <span class="tag">Animação</span>
+                <span class="tag">Moderno</span>
+              </div>
+              <div class="price">R$ 247,00</div>
+              <div class="actions">
+                <button class="btn" data-demo="portfolio">Demo</button>
+                <button class="btn primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card fade-in" data-category="ecommerce">
+            <div class="thumb">
+              <div style="background:#6d28d9;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">ShopMax</div>
+            </div>
+            <div class="card-content">
+              <h3>ShopMax</h3>
+              <p class="muted">Template completo para lojas virtuais com carrinho, checkout e integrações.</p>
+              <div class="tags">
+                <span class="tag">E-commerce</span>
+                <span class="tag">Vendas</span>
+                <span class="tag">Conversão</span>
+              </div>
+              <div class="price">R$ 397,00</div>
+              <div class="actions">
+                <button class="btn" data-demo="ecommerce">Demo</button>
+                <button class="btn primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card fade-in" data-category="blog">
+            <div class="thumb">
+              <span class="card-badge">Novo</span>
+              <div style="background:#a78bfa;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">BlogExpert</div>
+            </div>
+            <div class="card-content">
+              <h3>BlogExpert</h3>
+              <p class="muted">Template otimizado para blogs com foco em leitura, compartilhamento e engajamento.</p>
+              <div class="tags">
+                <span class="tag">Blog</span>
+                <span class="tag">Leitura</span>
+                <span class="tag">Social</span>
+              </div>
+              <div class="price">R$ 227,00</div>
+              <div class="actions">
+                <button class="btn" data-demo="blog">Demo</button>
+                <button class="btn primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card fade-in" data-category="corporate">
+            <div class="thumb">
+              <div style="background:#7e22ce;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">BusinessPlus</div>
+            </div>
+            <div class="card-content">
+              <h3>BusinessPlus</h3>
+              <p class="muted">Template sofisticado para negócios com seções para serviços, equipe e clientes.</p>
+              <div class="tags">
+                <span class="tag">Empresarial</span>
+                <span class="tag">Serviços</span>
+                <span class="tag">Profissional</span>
+              </div>
+              <div class="price">R$ 327,00</div>
+              <div class="actions">
+                <button class="btn" data-demo="business">Demo</button>
+                <button class="btn primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card fade-in" data-category="portfolio">
+            <div class="thumb">
+              <div style="background:#6366f1;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">MinimalPortfolio</div>
+            </div>
+            <div class="card-content">
+              <h3>MinimalPortfolio</h3>
+              <p class="muted">Design minimalista para quem quer destacar seu trabalho com elegância e simplicidade.</p>
+              <div class="tags">
+                <span class="tag">Minimalista</span>
+                <span class="tag">Elegante</span>
+                <span class="tag">Portfólio</span>
+              </div>
+              <div class="price">R$ 267,00</div>
+              <div class="actions">
+                <button class="btn" data-demo="minimal">Demo</button>
+                <button class="btn primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Planos e Preços</div>
+          <h2 class="section-title">Escolha o plano ideal para seu negócio</h2>
+          <p class="section-subtitle">Oferecemos opções flexíveis para atender desde freelancers até agências estabelecidas</p>
+        </div>
+        
+        <div class="pricing-container">
+          <div class="pricing-card fade-in">
+            <h3>Iniciante</h3>
+            <div class="price-tag">R$ 97<span>/mês</span></div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> 5 Templates Premium</li>
+              <li><i class="fas fa-check-circle"></i> Suporte por E-mail</li>
+              <li><i class="fas fa-check-circle"></i> Atualizações Mensais</li>
+              <li><i class="fas fa-check-circle"></i> Licença para 3 Clientes</li>
+              <li><i class="fas fa-times-circle"></i> Acesso à Comunidade</li>
+              <li><i class="fas fa-times-circle"></i> Webinars Exclusivos</li>
+            </ul>
+            <button class="btn primary">Escolher Plano</button>
+          </div>
+          
+          <div class="pricing-card featured fade-in">
+            <h3>Profissional</h3>
+            <div class="price-tag">R$ 197<span>/mês</span></div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> 20 Templates Premium</li>
+              <li><i class="fas fa-check-circle"></i> Suporte Prioritário</li>
+              <li><i class="fas fa-check-circle"></i> Atualizações Semanais</li>
+              <li><i class="fas fa-check-circle"></i> Licença para 15 Clientes</li>
+              <li><i class="fas fa-check-circle"></i> Acesso à Comunidade</li>
+              <li><i class="fas fa-times-circle"></i> Webinars Exclusivos</li>
+            </ul>
+            <button class="btn primary">Escolher Plano</button>
+          </div>
+          
+          <div class="pricing-card fade-in">
+            <h3>Agência</h3>
+            <div class="price-tag">R$ 397<span>/mês</span></div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Todos os Templates</li>
+              <li><i class="fas fa-check-circle"></i> Suporte 24/7</li>
+              <li><i class="fas fa-check-circle"></i> Atualizações Diárias</li>
+              <li><i class="fas fa-check-circle"></i> Licença Ilimitada</li>
+              <li><i class="fas fa-check-circle"></i> Acesso à Comunidade</li>
+              <li><i class="fas fa-check-circle"></i> Webinars Exclusivos</li>
+            </ul>
+            <button class="btn primary">Escolher Plano</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">O que dizem nossos clientes</div>
+          <h2 class="section-title">Histórias de sucesso</h2>
+          <p class="section-subtitle">Confira depoimentos de profissionais que transformaram seus negócios com nossos templates</p>
+        </div>
+        
+        <div class="testimonials-container">
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar" style="background:#7c3aed;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;">MC</div>
+              <div>
+                <div class="testimonial-author">Maria Carvalho</div>
+                <div class="testimonial-role">Designer Freelancer</div>
+              </div>
+            </div>
+            <p class="quote">"Os templates da OrionWeb mudaram completamente meu fluxo de trabalho. Agora consigo entregar sites profissionais em questão de horas, e meus clientes amam o resultado!"</p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar" style="background:#8b5cf6;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;">JS</div>
+              <div>
+                <div class="testimonial-author">João Silva</div>
+                <div class="testimonial-role">Fundador da Agência WebMax</div>
+              </div>
+            </div>
+            <p class="quote">"A variedade de templates e a facilidade de personalização nos permitiu escalar nossas operações. Economizamos tempo e aumentamos nossa lucratividade em 40%."</p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar" style="background:#6d28d9;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;">AS</div>
+              <div>
+                <div class="testimonial-author">Ana Souza</div>
+                <div class="testimonial-role">Consultora de Marketing</div>
+              </div>
+            </div>
+            <p class="quote">"A qualidade dos templates é impressionante. Os recursos de acessibilidade e SEO nativos fazem toda diferença para meus clientes que precisam de resultados rápidos."</p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Perguntas Frequentes</div>
+          <h2 class="section-title">Tire suas dúvidas</h2>
+          <p class="section-subtitle">Confira as respostas para as perguntas mais comuns sobre nossos produtos e serviços</p>
+        </div>
+        
+        <div class="faq-container">
+          <div class="faq-item fade-in">
+            <div class="faq-question">
+              <span>Como funciona a personalização dos templates?</span>
+              <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+              <p>Nossos templates incluem um painel de personalização intuitivo onde você pode alterar cores, fontes, espaçamentos e conteúdos visualmente, sem necessidade de conhecimentos técnicos avançados. Basta clicar e personalizar!</p>
+            </div>
+          </div>
+          
+          <div class="faq-item fade-in">
+            <div class="faq-question">
+              <span>Os templates são realmente responsivos?</span>
+              <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+              <p>Sim! Todos os nossos templates são desenvolvidos com abordagem mobile-first e testados em diversos dispositivos e navegadores para garantir uma experiência perfeita em smartphones, tablets e desktops.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item fade-in">
+            <div class="faq-question">
+              <span>Quais são as opções de suporte disponíveis?</span>
+              <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+              <p>Oferecemos suporte por e-mail para todos os clientes, com resposta em até 24h. Os planos Profissional e Agência incluem suporte prioritário e acesso a webinars exclusivos com nossa equipe.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item fade-in">
+            <div class="faq-question">
+              <span>Posso revender os templates para meus clientes?</span>
+              <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+              <p>Sim! Nossos templates são licenciados especificamente para revenda. Cada plano permite um número determinado de clientes. Consulte os termos de cada plano para mais detalhes.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item fade-in">
+            <div class="faq-question">
+              <span>Como recebo acesso aos templates após a compra?</span>
+              <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+              <p>Imediatamente após a confirmação do pagamento, você recebe um e-mail com acesso à nossa área de membros, onde poderá baixar todos os templates incluídos no seu plano e acessar os recursos de personalização.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Fale Conosco</div>
+          <h2 class="section-title">Pronto para elevar seus projetos?</h2>
+          <p class="section-subtitle">Entre em contato conosco para tirar dúvidas ou solicitar uma demonstração personalizada</p>
+        </div>
+        
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3>E-mail</h3>
+                <p>contato@orionweb.com.br</p>
+                <small class="muted">Respondemos em até 24h</small>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <h3>Telefone</h3>
+                <p>+55 (11) 99999-9999</p>
+                <small class="muted">Seg a Sex, 9h às 18h</small>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-comment-dots"></i>
+              </div>
+              <div>
+                <h3>Chat Online</h3>
+                <p>Atendimento instantâneo</p>
+                <small class="muted">Disponível no plano Profissional e Agência</small>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3>Endereço</h3>
+                <p>Av. Paulista, 1000 - São Paulo, SP</p>
+                <small class="muted">Agende uma visita</small>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Assunto</label>
+                <select id="subject" required>
+                  <option value="">Selecione um assunto</option>
+                  <option value="sales">Dúvidas sobre vendas</option>
+                  <option value="support">Suporte técnico</option>
+                  <option value="partnership">Parcerias</option>
+                  <option value="other">Outro</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" rows="5" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn primary">
+                <i class="fas fa-paper-plane"></i> Enviar mensagem
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>OrionWeb</h4>
+          <p>Templates premium para revenda. Desenvolvemos soluções que impulsionam seu negócio digital.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Produtos</h4>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Todos os Templates</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Templates Corporativos</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Portfólios</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> E-commerce</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Blogs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Documentação</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Tutoriais</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Webinars</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Comunidade</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Inscreva-se para receber novidades, atualizações e ofertas exclusivas.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Seu e-mail" required>
+            <button type="submit" class="btn primary">Inscrever</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="legal">
+        <p>&copy; <span id="year"></span> OrionWeb. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <div class="modal" id="demoModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <h2>Demonstração Personalizada</h2>
+      <p>Preencha seus dados para agendar uma demonstração ao vivo dos nossos templates:</p>
+      <form id="demoForm">
+        <div class="form-group">
+          <label for="demoName">Nome completo</label>
+          <input type="text" id="demoName" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="demoEmail">E-mail</label>
+          <input type="email" id="demoEmail" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="demoBusiness">Tipo de negócio</label>
+          <select id="demoBusiness" required>
+            <option value="">Selecione uma opção</option>
+            <option value="freelancer">Freelancer</option>
+            <option value="agency">Agência</option>
+            <option value="business">Empresa</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn primary">
+          <i class="fas fa-calendar-check"></i> Agendar Demonstração
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Enhanced state + persistence
+    const root = document.documentElement;
+    const prefsKey = 'orion_prefs';
+    const defaultPrefs = { 
+      theme: 'dark',
+      reducedMotion: false 
+    };
+    let prefs = JSON.parse(localStorage.getItem(prefsKey)) || defaultPrefs;
+
+    // Elements
+    const yearEl = document.getElementById('year');
+    const themeBtn = document.getElementById('themeBtn');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const contactForm = document.getElementById('contactForm');
+    const demoForm = document.getElementById('demoForm');
+    const toast = document.getElementById('toast');
+    const demoButtons = document.querySelectorAll('[data-demo]');
+    const demoBtn = document.getElementById('demoBtn');
+    const buyNowBtn = document.getElementById('buyNow');
+    const backToTop = document.getElementById('backToTop');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+    const modal = document.getElementById('demoModal');
+    const modalClose = document.getElementById('modalClose');
+
+    // Apply preferences
+    function applyPrefs() {
+      // Theme
+      if (prefs.theme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+      } else {
+        root.removeAttribute('data-theme');
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+
+      // Reduced motion
+      if (prefs.reducedMotion) {
+        root.style.setProperty('--transition', 'all 0s ease');
+      } else {
+        root.style.setProperty('--transition', 'all 0.3s ease');
+      }
+
+      localStorage.setItem(prefsKey, JSON.stringify(prefs));
+    }
+
+    // Show toast notification
+    function showToast(message, type = 'default', duration = 3000) {
+      toast.textContent = message;
+      toast.className = 'toast';
+      
+      if (type !== 'default') {
+        toast.classList.add(type);
+      }
+      
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    // Filter cards
+    function filterCards(category) {
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Toggle FAQ item
+    function toggleFaq(item) {
+      const isActive = item.classList.contains('active');
+      
+      // Close all items
+      faqItems.forEach(faq => {
+        faq.classList.remove('active');
+      });
+      
+      // Open clicked item if it was closed
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // Check if element is in viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    // Handle scroll events
+    function handleScroll() {
+      // Header shadow on scroll
+      if (window.scrollY > 50) {
+        document.querySelector('header').classList.add('scrolled');
+      } else {
+        document.querySelector('header').classList.remove('scrolled');
+      }
+      
+      // Back to top button
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+      
+      // Animate elements on scroll
+      document.querySelectorAll('.fade-in').forEach(el => {
+        if (isInViewport(el)) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    // Init UI
+    yearEl.textContent = new Date().getFullYear();
+    applyPrefs();
+
+    // Theme toggle
+    themeBtn.addEventListener('click', () => {
+      prefs.theme = prefs.theme === 'light' ? 'dark' : 'light';
+      applyPrefs();
+      showToast(`Modo ${prefs.theme === 'light' ? 'claro' : 'escuro'} ativado`, 'success');
+    });
+
+    // Demo buttons
+    demoButtons.forEach(b => b.addEventListener('click', (e) => {
+      e.preventDefault();
+      showToast(`Demonstração de ${b.getAttribute('data-demo')} será aberta em breve`, 'success');
+      setTimeout(() => {
+        window.open(`https://demo-orionweb-${b.getAttribute('data-demo')}.netlify.app`, '_blank');
+      }, 1500);
+    }));
+
+    // Mobile menu
+    mobileMenuBtn.addEventListener('click', () => {
+      const open = mobileMenu.style.display !== 'block';
+      mobileMenu.style.display = open ? 'block' : 'none';
+      mobileMenuBtn.classList.toggle('active', open);
+      
+      // Close menu when clicking on a link
+      if (open) {
+        const links = mobileMenu.querySelectorAll('a');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.style.display = 'none';
+            mobileMenuBtn.classList.remove('active');
+          });
+        });
+      }
+    });
+
+    // Form submission
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Simulate form submission
+      showToast('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+      contactForm.reset();
+    });
+
+    // Demo form submission
+    demoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('demoName').value;
+      const email = document.getElementById('demoEmail').value;
+      const business = document.getElementById('demoBusiness').value;
+      
+      // Simulate form submission
+      showToast('Solicitação enviada! Entraremos em contato para agendar a demonstração.', 'success');
+      demoForm.reset();
+      modal.classList.remove('open');
+    });
+
+    // Buy now button
+    buyNowBtn.addEventListener('click', () => {
+      showToast('Redirecionando para nossos templates...', 'success');
+      setTimeout(() => {
+        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+      }, 1000);
+    });
+
+    // Demo button in hero
+    demoBtn.addEventListener('click', () => {
+      modal.classList.add('open');
+    });
+
+    // Modal close
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('open');
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('open');
+      }
+    });
+
+    // Back to top
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ toggle
+    faqItems.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        toggleFaq(item);
+      });
+    });
+
+    // Filter buttons
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Filter cards
+        filterCards(button.getAttribute('data-filter'));
+      });
+    });
+
+    // Keyboard: Esc closes mobile menu and modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        mobileMenu.style.display = 'none';
+        mobileMenuBtn.classList.remove('active');
+        modal.classList.remove('open');
+      }
+    });
+
+    // Handle scroll events
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check for elements in viewport
+    setTimeout(handleScroll, 100);
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Reduced motion preference
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (motionQuery.matches) {
+      prefs.reducedMotion = true;
+      applyPrefs();
+    }
+
+    motionQuery.addEventListener('change', () => {
+      prefs.reducedMotion = motionQuery.matches;
+      applyPrefs();
+    });
+  </script>
+</body>
+  </html>
